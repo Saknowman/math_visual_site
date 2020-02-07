@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <base-input-with-label></base-input-with-label>
+    <div style="width: 250px;">
+        <range-input-with-label></range-input-with-label>
     </div>
 </template>
 
@@ -10,7 +10,7 @@
     export default {
         name: "ViewComponent",
         components: {
-            'base-input-with-label': RangeInputWithLabel
+            'range-input-with-label': RangeInputWithLabel
         }
     }
 </script>

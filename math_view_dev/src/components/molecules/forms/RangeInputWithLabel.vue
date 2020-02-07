@@ -23,11 +23,11 @@
         props: {
             min: {
                 type: Number,
-                default: 0
+                default: -10
             },
             max: {
                 type: Number,
-                default: 100
+                default: 10
             },
             step: {
                 type: Number,
@@ -46,7 +46,7 @@
         .base-input-range {
             margin-top: $space-medium;
             padding: $space-medium;
-            font-size: 1.1em;
+            font-size: 1.0em;
         }
     }
 </style>
