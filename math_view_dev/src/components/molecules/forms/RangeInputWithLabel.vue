@@ -3,6 +3,8 @@
         <base-input-range
                 class="base-input-range"
                 type="range"
+                @change="(new_value) => {value = new_value; $emit('change', value)}"
+                :value="value"
                 :min="min"
                 :max="max"
                 :step="step"
@@ -32,6 +34,12 @@
             step: {
                 type: Number,
                 default: 1
+            }
+        },
+        data() {
+            return {
+                value: 5,
+                aaa: 0
             }
         }
     }

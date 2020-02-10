@@ -5,6 +5,7 @@
                 class="base-input flex-item"
                 type="range"
                 v-model.number="current_value"
+                @change="$emit('change', current_value)"
                 :min="min"
                 :max="max"
                 :step="step">
@@ -14,9 +15,12 @@
 <script>
     export default {
         name: "BaseInputRange",
-        components: {
-        },
+        components: {},
         props: {
+            value: {
+                type: Number,
+                default: 0
+            },
             min: {
                 type: Number,
                 default: -10
@@ -30,12 +34,21 @@
                 default: 1
             }
         },
+        watch: {
+            value: {
+                immediate: true,
+                handler(new_value) {
+                    this.current_value = new_value;
+                }
+            }
+        }
+        ,
         data() {
             return {
                 current_value: 0
             }
         }
-
+        ,
     }
 </script>
 
