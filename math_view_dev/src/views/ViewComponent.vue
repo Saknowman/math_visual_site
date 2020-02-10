@@ -1,7 +1,6 @@
 <template>
     <div style="width: 250px;">
-        <range-input-with-label @change="change_speed"></range-input-with-label>
-
+        <range-input-list-section :config_list="range_input_config_list"></range-input-list-section>
         <div>
             {{ $store.state.main_categories.constant_velocity_linear_motion.current_x }}
         </div>
@@ -11,20 +10,31 @@
 </template>
 
 <script>
-    import RangeInputWithLabel from "../components/molecules/forms/RangeInputWithLabel";
     import runner from "../logics/main_categories/runner"
     import logic from "../logics/main_categories/constant_velocity_linear_motion"
+    import RangeInputListSection from "../components/molecules/forms/RangeInputListSection";
 
     export default {
         name: "ViewComponent",
         components: {
-            'range-input-with-label': RangeInputWithLabel
+            'range-input-list-section': RangeInputListSection
         },
         data() {
-            return {}
+            return {
+                range_input_config_list: [
+                    Object.assign({label: "Sample", min: -20, max: 20, step: 2}, {
+                        change: function (value) {
+                            console.log(value);
+                        }
+                    }),
+                    Object.assign(this.$store.state.main_categories.constant_velocity_linear_motion.config.speed, {
+                        change: this.change_speed
+                    })
+                ]
+            }
         },
         mounted() {
-            runner.start(logic, this.$store.state.main_categories.constant_velocity_linear_motion)
+            this.start();
         },
         methods: {
             start() {

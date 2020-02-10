@@ -4,6 +4,7 @@ export default {
         speed: 1,
         config: {
             speed: {
+                label: 'Speed',
                 min: -10,
                 max: 10,
                 step: 1

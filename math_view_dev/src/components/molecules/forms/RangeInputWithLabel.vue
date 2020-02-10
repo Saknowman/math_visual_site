@@ -1,5 +1,5 @@
 <template>
-    <base-label class="base-label">
+    <base-label class="base-label" :label="label">
         <base-input-range
                 class="base-input-range"
                 type="range"
@@ -23,6 +23,10 @@
             'base-input-range': BaseInputRange
         },
         props: {
+            label: {
+                type: String,
+                default: "Label"
+            },
             min: {
                 type: Number,
                 default: -10
@@ -52,7 +56,6 @@
         font-size: 1.3em;
 
         .base-input-range {
-            margin-top: $space-medium;
             padding: $space-medium;
             font-size: 1.0em;
         }
