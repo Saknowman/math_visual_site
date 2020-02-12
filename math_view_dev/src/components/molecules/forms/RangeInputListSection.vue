@@ -3,6 +3,7 @@
         <li v-for="config in config_list" :key="config.label">
             <range-input-with-label
                     :label="config.label"
+                    :value="config.value"
                     :max="config.max"
                     :min="config.min"
                     :step="config.step"

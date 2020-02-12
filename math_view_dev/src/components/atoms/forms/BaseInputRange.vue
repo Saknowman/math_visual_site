@@ -40,6 +40,11 @@
                 handler(new_value) {
                     this.current_value = new_value;
                 }
+            },
+            current_value: {
+                handler(new_value) {
+                    this.$emit('change', new_value);
+                }
             }
         }
         ,

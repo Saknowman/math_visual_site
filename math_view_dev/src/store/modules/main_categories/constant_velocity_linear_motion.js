@@ -7,7 +7,8 @@ export default {
                 label: 'Speed',
                 min: -10,
                 max: 10,
-                step: 1
+                step: 1,
+                default: 1
             },
             current_x: {
                 default: 0,

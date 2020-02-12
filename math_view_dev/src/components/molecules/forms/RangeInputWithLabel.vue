@@ -3,7 +3,7 @@
         <base-input-range
                 class="base-input-range"
                 type="range"
-                @change="(new_value) => {value = new_value; $emit('change', value)}"
+                @change="(new_value) => {$emit('change', new_value)}"
                 :value="value"
                 :min="min"
                 :max="max"
@@ -27,6 +27,10 @@
                 type: String,
                 default: "Label"
             },
+            value: {
+                type: Number,
+                default: 0
+            },
             min: {
                 type: Number,
                 default: -10
@@ -38,12 +42,6 @@
             step: {
                 type: Number,
                 default: 1
-            }
-        },
-        data() {
-            return {
-                value: 5,
-                aaa: 0
             }
         }
     }
