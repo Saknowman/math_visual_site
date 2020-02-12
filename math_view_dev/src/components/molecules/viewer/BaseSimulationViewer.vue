@@ -12,7 +12,6 @@
 
 <style lang="scss" scoped>
     .base-simulation-viewer {
-        background: $theme-color-background-secondary;
         height: 100%;
     }
 </style>

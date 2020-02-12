@@ -14,7 +14,6 @@
         display: flex;
         flex-direction: column;
         height: 100%;
-
         .header {
             height: $header-height;
         }

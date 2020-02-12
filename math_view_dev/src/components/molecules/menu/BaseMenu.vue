@@ -3,21 +3,21 @@
         <slot name="config"></slot>
         <slot name="current-value-viewer"></slot>
         <div class="motion-controller">
-            <div
+            <i
                     v-if="!is_running"
-                    class="control-button start-button"
-                    @click="$emit('start')">Start
-            </div>
-            <div
+                    class="control-button start-button fas fa-play-circle"
+                    @click="$emit('start')">
+            </i>
+            <i
                     v-else
-                    class="control-button stop-button"
-                    @click="$emit('stop')">Stop
-            </div>
+                    class="control-button stop-button fas fa-stop-circle"
+                    @click="$emit('stop')">
+            </i>
 
-            <div
-                    class="control-button reset-button"
-                    @click="$emit('reset')">Reset
-            </div>
+            <i
+                    class="control-button reset-button fas fa-redo-alt"
+                    @click="$emit('reset')">
+            </i>
         </div>
     </div>
 </template>
@@ -41,6 +41,8 @@
         .control-button {
             width: 50px;
             margin-left: $space-x-large;
+            font-size: 2em;
+            color: $theme-color-main-primary;
         }
         .control-button:first-child {
             margin-left: 0;

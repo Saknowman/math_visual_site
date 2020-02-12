@@ -59,6 +59,10 @@
                 fill: $grid-color-main;
             }
         }
+
+        .target-circle {
+            fill: $theme-color-accent-primary;
+        }
     }
 
 </style>

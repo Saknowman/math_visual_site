@@ -34,7 +34,7 @@
 
         .menu-border {
             width: $space-medium;
-            background: $theme-color-main-primary;
+            background: $theme-color-main-light;
             border-radius: 10px;
             margin: $space-x-large 0;
         }
