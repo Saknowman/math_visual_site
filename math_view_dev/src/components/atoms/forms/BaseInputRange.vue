@@ -1,33 +1,106 @@
 <template>
     <div class="input-container">
-        <base-input class="base-input" type="range" v-model="value"></base-input>
-        {{ value }}
+        <span class="current-value flex-item">{{ current_value }}</span>
+        <input
+                class="base-input flex-item"
+                type="range"
+                v-model.number="current_value"
+                @change="$emit('change', current_value)"
+                :min="min"
+                :max="max"
+                :step="step">
     </div>
 </template>
 
 <script>
-    import BaseInput from "./BaseInput";
-
     export default {
         name: "BaseInputRange",
-        components: {
-            'base-input': BaseInput
+        components: {},
+        props: {
+            value: {
+                type: Number,
+                default: 0
+            },
+            min: {
+                type: Number,
+                default: -10
+            },
+            max: {
+                type: Number,
+                default: 10
+            },
+            step: {
+                type: Number,
+                default: 1
+            }
         },
-        data: () => {
-            return {
-                value: 0
+        watch: {
+            value: {
+                immediate: true,
+                handler(new_value) {
+                    this.current_value = new_value;
+                }
             }
         }
-
+        ,
+        data() {
+            return {
+                current_value: 0
+            }
+        }
+        ,
     }
 </script>
 
 <style lang="scss" scoped>
     .input-container {
         width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .flex-item {
+            margin-bottom: $space-medium;
+        }
+
+        .current-value {
+            align-self: center;
+            font-size: 1.1em;
+            background: $theme-color-main-primary;
+            color: #fff;
+            border-radius: 10px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            padding: $space-medium;
+
+        }
 
         .base-input {
-            width: 100%;
+            align-self: center;
+            width: 95%;
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: $theme-color-main-light;
+            height: 2px;
+            border-radius: 6px;
+
+            &:focus,
+            &:active {
+                outline: none;
+            }
+
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                cursor: pointer;
+                position: relative;
+                width: 1.5em;
+                height: 1.5em;
+                display: block;
+                border: 2px solid $theme-color-main-primary;
+                background-color: #fff;
+                border-radius: 50%;
+                -webkit-border-radius: 50%;
+            }
         }
     }
 

@@ -1,8 +1,10 @@
 <template>
-    <base-label class="base-label">
+    <base-label class="base-label" :label="label">
         <base-input-range
                 class="base-input-range"
                 type="range"
+                @change="(new_value) => {value = new_value; $emit('change', value)}"
+                :value="value"
                 :min="min"
                 :max="max"
                 :step="step"
@@ -21,17 +23,27 @@
             'base-input-range': BaseInputRange
         },
         props: {
+            label: {
+                type: String,
+                default: "Label"
+            },
             min: {
                 type: Number,
-                default: 0
+                default: -10
             },
             max: {
                 type: Number,
-                default: 100
+                default: 10
             },
             step: {
                 type: Number,
                 default: 1
+            }
+        },
+        data() {
+            return {
+                value: 5,
+                aaa: 0
             }
         }
     }
@@ -44,9 +56,8 @@
         font-size: 1.3em;
 
         .base-input-range {
-            margin-top: $space-medium;
             padding: $space-medium;
-            font-size: 1.1em;
+            font-size: 1.0em;
         }
     }
 </style>
