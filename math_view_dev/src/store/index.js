@@ -2,12 +2,14 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import main_categories from './modules/main_categories/main';
+import node_card from "./modules/node_card";
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     modules: {
-        main_categories: main_categories
+        main_categories: main_categories,
+        node_card: node_card
     },
     // state: {
     //     count: 5,

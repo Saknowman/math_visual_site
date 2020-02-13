@@ -13,7 +13,7 @@
     import LogicRunnerTemplate from "../../components/templates/LogicRunnerTemplate";
     import MenuConstantVelocityLinearMotion from "../../components/organisms/menus/MenuConstantVelocityLinearMotion";
     import SimulationViewerConstantVelocityLinearMotion
-        from "../../components/organisms/viewer/SimulationViewerConstantVelocityLinearMotion";
+        from "../../components/organisms/viewer/simulator/SimulationViewerConstantVelocityLinearMotion";
 
     export default {
         name: "ConstantVelocityLinearMotion",

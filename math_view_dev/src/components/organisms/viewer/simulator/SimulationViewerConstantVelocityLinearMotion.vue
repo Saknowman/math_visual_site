@@ -40,7 +40,7 @@
 </template>
 
 <script>
-    import BaseSimulationViewer from "../../molecules/viewer/BaseSimulationViewer";
+    import BaseSimulationViewer from "../../../molecules/viewer/BaseSimulationViewer";
 
     export default {
         name: "SimulationViewerConstantVelocityLinearMotion",
