@@ -1,18 +1,17 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    Welcome to Easy Math
+    <simulation-link-list></simulation-link-list>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import SimulationLinkList from "../components/organisms/menus/SimulationLinkList";
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    'simulation-link-list': SimulationLinkList
   }
 }
 </script>
