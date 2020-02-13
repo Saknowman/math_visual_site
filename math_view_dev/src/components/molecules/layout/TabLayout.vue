@@ -17,13 +17,11 @@
         <scroll-area class="tab-contents">
             <div
                     class="tab-content"
+                    :class="{'active-tab': active_tab === header}"
                     v-for="(header, index) in headers"
                     :key="header + '_content'"
             >
-                <slot
-                        v-if="active_tab === header"
-                        :name="'content_' + index"
-                ></slot>
+                <slot :name="'content_' + index"></slot>
             </div>
         </scroll-area>
     </div>
@@ -86,6 +84,15 @@
             flex: 1;
             margin-top: $space-medium;
             padding-right: $space-medium;
+
+            .tab-content {
+                display: none;
+                height: 0;
+            }
+
+            .tab-content.active-tab{
+                display: block;
+            }
         }
     }
 </style>

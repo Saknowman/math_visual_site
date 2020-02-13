@@ -11,8 +11,29 @@
                 <text class="grid-text" x="51%" y="50%">0</text>
             </g>
 
-            <g>
-                <circle class="target-circle" r="50" cy="50%" :cx="current_x"></circle>
+            <g class="main-objects">
+                <g>
+                    <polygon
+                            class="angle-arrow"
+                            :points="angle_arrow_points"
+                            :style="{transform: 'rotate(' + current_rotate_angle + 'deg'}"
+                    ></polygon>
+
+                    <line
+                            class="angle-line"
+                            x1="50%"
+                            y1="50%"
+                            :x2="this.width / 2 + (line_length * 0.81)"
+                            :y2="height / 2"
+                            :style="{
+                            transform: 'rotate(' + current_rotate_angle + 'deg',
+                            'stroke-width': Math.abs(line_length) * 0.1
+                            }"
+                    ></line>
+                </g>
+                <g>
+                    <circle class="target-circle" r="50" :cy="current_y" :cx="current_x"></circle>
+                </g>
             </g>
         </svg>
     </base-simulation-viewer>
@@ -34,6 +55,34 @@
                 let distance_from_center_x = (Math.abs(current_x) / this.$store.state.main_categories.constant_velocity_linear_motion.config.current_x.max) * center_pos_x;
                 distance_from_center_x *= is_minus ? -1 : 1;
                 return center_pos_x + distance_from_center_x;
+            },
+            current_y: function () {
+                const current_y = this.$store.state.main_categories.constant_velocity_linear_motion.current_y;
+                const center_pos_y = this.height / 2.0;
+                const is_minus = current_y < 0;
+                let distance_from_center_y = (Math.abs(current_y) / this.$store.state.main_categories.constant_velocity_linear_motion.config.current_y.max) * center_pos_y;
+                distance_from_center_y *= is_minus ? -1 : 1;
+                return center_pos_y - distance_from_center_y;
+            },
+            line_length: function () {
+                return (this.width * 0.01) * this.$store.state.main_categories.constant_velocity_linear_motion.speed;
+            },
+            angle_arrow_points: function() {
+                const line_length = (this.width * 0.01) * this.$store.state.main_categories.constant_velocity_linear_motion.speed;
+                const edge_x = this.width / 2 + line_length;
+                const center_y = this.height / 2;
+                const arrow_cali_x = edge_x - line_length * 0.2;
+                const result = [
+                    [this.width / 2, center_y].join(','),
+                    [edge_x, this.height / 2].join(','),
+                    [arrow_cali_x, center_y - line_length * 0.2].join(','),
+                    [arrow_cali_x, center_y + line_length * 0.2].join(','),
+                    [edge_x, this.height / 2].join(',')
+                ];
+                return result.join(' ');
+            },
+            current_rotate_angle: function() {
+                return -(this.$store.state.main_categories.constant_velocity_linear_motion.angle);
             }
         },
         data() {
@@ -62,6 +111,17 @@
 
         .target-circle {
             fill: $theme-color-accent-primary;
+        }
+
+        .angle-line {
+            transform-origin: center;
+            stroke-width: 10px;
+            stroke: $theme-color-main-primary;
+        }
+
+        .angle-arrow {
+            transform-origin: center;
+            fill: $theme-color-main-primary;
         }
     }
 

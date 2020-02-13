@@ -44,17 +44,17 @@
                         value: this.$store.state.main_categories.constant_velocity_linear_motion.speed,
                         change: this.change_speed
                     }),
-                    {label: 'Dummy1', change: () => {}},
-                    {label: 'Dummy2', change: () => {}},
-                    {label: 'Dummy3', change: () => {}},
-                    {label: 'Dummy4', change: () => {}},
-                    {label: 'Dummy5', change: () => {}},
-                    {label: 'Dummy6', change: () => {}},
+                    Object.assign(this.$store.state.main_categories.constant_velocity_linear_motion.config.angle, {
+                        value: this.$store.state.main_categories.constant_velocity_linear_motion.angle,
+                        change: this.change_angle
+                    }),
                 ],
                 current_values_list: [],
                 current_values_config_list: [
                     {label: 'X', is_constant: false},
-                    {label: 'Speed', is_constant: true}
+                    {label: 'Y', is_constant: false},
+                    {label: 'Speed', is_constant: true},
+                    {label: 'Angle', is_constant: true},
                 ],
                 is_running: false
             }
@@ -67,6 +67,7 @@
             start() {
                 runner.start(logic, this.$store.state.main_categories.constant_velocity_linear_motion, () => {
                     this.current_values_list.splice(0, 1, this.$store.state.main_categories.constant_velocity_linear_motion.current_x);
+                    this.current_values_list.splice(1, 1, this.$store.state.main_categories.constant_velocity_linear_motion.current_y);
                 });
                 this.is_running = true
             },
@@ -79,13 +80,19 @@
                 Object.keys(this.keys).forEach((key) => this.keys[key]++);
                 this.current_values_list = [
                     this.$store.state.main_categories.constant_velocity_linear_motion.current_x,
-                    this.$store.state.main_categories.constant_velocity_linear_motion.speed
+                    this.$store.state.main_categories.constant_velocity_linear_motion.current_y,
+                    this.$store.state.main_categories.constant_velocity_linear_motion.speed,
+                    this.$store.state.main_categories.constant_velocity_linear_motion.angle
                 ];
                 if(this.is_running) this.start();
             },
             change_speed(value) {
                 this.$store.state.main_categories.constant_velocity_linear_motion.speed = value;
-                this.current_values_list.splice(1, 1, value);
+                this.current_values_list.splice(2, 1, value);
+            },
+            change_angle(value) {
+                this.$store.state.main_categories.constant_velocity_linear_motion.angle = value;
+                this.current_values_list.splice(3, 1, value);
             }
         }
     }
