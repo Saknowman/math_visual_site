@@ -20,6 +20,7 @@
 
         .main {
             flex: 1;
+            max-height: calc(100vh - #{$header-height});
         }
     }
 </style>

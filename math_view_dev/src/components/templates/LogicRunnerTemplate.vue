@@ -3,7 +3,6 @@
         <div class="cell-item menu-container">
             <slot class="menu" name="menu"></slot>
         </div>
-        <div class="menu-border"></div>
         <div class="cell-item viewer-container">
             <slot class="viewer" name="viewer"></slot>
         </div>
@@ -30,6 +29,7 @@
 
         .menu-container {
             width: $menu-width;
+            background: rgba($theme-color-main-primary, 0.2);
         }
 
         .menu-border {

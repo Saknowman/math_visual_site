@@ -1,5 +1,5 @@
 <template>
-    <base-menu
+    <base-controller-menu
             class="menu"
             :is_running="is_running"
             @start="start"
@@ -16,7 +16,7 @@
                     :values_list="current_values_list"
                     :config_list="current_values_config_list"></current-value-viewer-list-section>
         </template>
-    </base-menu>
+    </base-controller-menu>
 </template>
 
 <script>
@@ -24,12 +24,12 @@
     import logic from "../../../logics/main_categories/constant_velocity_linear_motion"
     import RangeInputListSection from "../../molecules/forms/RangeInputListSection";
     import CurrentValueViewerListSection from "../../molecules/viewer/CurrentValueViewerListSection";
-    import BaseMenu from "../../molecules/menu/BaseMenu";
+    import BaseControllerMenu from "../../molecules/menu/BaseControllerMenu";
 
     export default {
         name: "MenuConstantVelocityLinearMotion",
         components: {
-            'base-menu': BaseMenu,
+            'base-controller-menu': BaseControllerMenu,
             'range-input-list-section': RangeInputListSection,
             'current-value-viewer-list-section': CurrentValueViewerListSection,
         },
@@ -43,7 +43,13 @@
                     Object.assign(this.$store.state.main_categories.constant_velocity_linear_motion.config.speed, {
                         value: this.$store.state.main_categories.constant_velocity_linear_motion.speed,
                         change: this.change_speed
-                    })
+                    }),
+                    {label: 'Dummy1', change: () => {}},
+                    {label: 'Dummy2', change: () => {}},
+                    {label: 'Dummy3', change: () => {}},
+                    {label: 'Dummy4', change: () => {}},
+                    {label: 'Dummy5', change: () => {}},
+                    {label: 'Dummy6', change: () => {}},
                 ],
                 current_values_list: [],
                 current_values_config_list: [

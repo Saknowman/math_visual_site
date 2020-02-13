@@ -54,7 +54,7 @@
         font-size: 1.3em;
 
         .base-input-range {
-            padding: $space-medium;
+            padding: $space-medium 0;
             font-size: 1.0em;
         }
     }
