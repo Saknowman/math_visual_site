@@ -4,7 +4,7 @@
                 class="svg-canvas"
                 width="100%"
                 height="100%"
-                viewBox="0, 0, 2000, 1000">
+                :viewBox="[0, 0, width, height].join(',')">
             <g class="bg-grid">
                 <line class="horizontal-line" x1="0" y1="50%" x2="2000" y2="50%"></line>
                 <line class="horizontal-line" x1="50%" y1="0" x2="50%" y2="100%"></line>
@@ -87,8 +87,8 @@
         },
         data() {
             return {
-                width: 2000,
-                height: 1000,
+                width: this.$store.getters.layout_simulator_width,
+                height: this.$store.getters.layout_simulator_height,
             }
         }
     }
