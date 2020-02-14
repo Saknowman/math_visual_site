@@ -29,7 +29,7 @@
     import NodeCardInOut from "../../../molecules/node/NodeCardInOut";
 
     export default {
-        name: "NodeViewerConstantVelocityLinearMotion",
+        name: "NodeGraphConstantVelocityLinearMotion",
         components: {
             'node-card-in-out': NodeCardInOut
         },
@@ -154,8 +154,8 @@
                         ],
                     },
                 ],
-                viewer_width: this.$store.getters.layout_node_viewer_width * ((this.$store.getters.node_card_static_default_width * 6) / this.$store.getters.layout_node_viewer_width),
-                viewer_height: this.$store.getters.layout_node_viewer_height * ((this.$store.getters.node_card_static_default_width * 6) / this.$store.getters.layout_node_viewer_width),
+                viewer_width: this.$store.getters.layout_node_graph_width * ((this.$store.getters.node_card_static_default_width * 6) / this.$store.getters.layout_node_graph_width),
+                viewer_height: this.$store.getters.layout_node_graph_height * ((this.$store.getters.node_card_static_default_width * 6) / this.$store.getters.layout_node_graph_width),
                 node_link_lines_config_list: [
                     // in_circle to adds
                     { points: ['30,29', '170,19.5'].join(' ')},

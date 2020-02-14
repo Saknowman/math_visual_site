@@ -3,13 +3,13 @@
 </template>
 
 <script>
-    import NodeViewerConstantVelocityLinearMotion
-        from "../components/organisms/viewer/node/NodeViewerConstantVelocityLinearMotion";
+    import NodeGraphConstantVelocityLinearMotion
+        from "../components/organisms/viewer/node/NodeGraphConstantVelocityLinearMotion";
 
     export default {
         name: "ViewComponent",
         components: {
-            'node-viewer': NodeViewerConstantVelocityLinearMotion
+            'node-viewer': NodeGraphConstantVelocityLinearMotion
         },
     }
 </script>

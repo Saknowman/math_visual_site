@@ -5,6 +5,8 @@
             @start="start"
             @stop="stop"
             @reset="reset"
+            @show_simulator="show_simulator"
+            @show_node_graph="show_node_graph"
     >
         <template v-slot:config>
             <range-input-list-section
@@ -85,6 +87,14 @@
                     this.$store.state.main_categories.constant_velocity_linear_motion.angle
                 ];
                 if(this.is_running) this.start();
+            },
+            show_simulator() {
+                this.$store.state.main_categories.is_shown_simulator = true;
+                this.$store.state.main_categories.is_shown_node_graph = false;
+            },
+            show_node_graph() {
+                this.$store.state.main_categories.is_shown_simulator = false;
+                this.$store.state.main_categories.is_shown_node_graph = true;
             },
             change_speed(value) {
                 this.$store.state.main_categories.constant_velocity_linear_motion.velocity = value;

@@ -16,10 +16,25 @@
             </template>
 
             <template v-slot:header_2>
-                <i class="tab-icon fas fa-cog"></i>
+                <i class="tab-icon fas fa-exchange-alt"></i>
             </template>
             <template v-slot:content_2>
+                <div class="change-viewer-selection">
+                    <div class="viewer-selector"
+                         @click="$emit('show_simulator')"
+                    >
+                        <i class="fas fa-shapes"></i>
+                        <span>Simulator</span>
+                    </div>
+                    <div class="viewer-selector"
+                         @click="$emit('show_node_graph')"
+                    >
+                        <i class="fas fa-project-diagram"></i>
+                        <span>Node Graph</span>
+                    </div>
 
+
+                </div>
             </template>
         </tab-layout>
         <div class="motion-controller">
@@ -74,6 +89,33 @@
                 color: $theme-color-accent-primary;
                 align-self: center;
             }
+
+            .change-viewer-selection {
+                display: flex;
+                flex-direction: column;
+                padding-left: $space-medium;
+
+                .viewer-selector {
+                    display: flex;
+                    margin: $space-medium;
+
+                    i {
+                        color: $theme-color-main-primary;
+                        width: 1.6em;
+                        font-size: 1.5em;
+                    }
+
+                    span {
+                        font-weight: bolder;
+                        font-size: 1.2em;
+                    }
+                }
+
+                .viewer-selector:hover {
+                    opacity: 0.8;
+                    cursor: pointer;
+                }
+            }
         }
 
         .motion-controller {
@@ -88,6 +130,10 @@
                 align-self: center;
                 font-size: 2em;
                 color: $theme-color-main-primary;
+            }
+
+            .control-button:hover {
+                cursor: pointer;
             }
 
             .control-button:first-child {

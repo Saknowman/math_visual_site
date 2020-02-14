@@ -4,7 +4,8 @@
             <slot class="menu" name="menu"></slot>
         </div>
         <div class="cell-item viewer-container">
-            <slot class="viewer" name="viewer"></slot>
+            <slot class="viewer" name="simulator"></slot>
+            <slot class="viewer" name="node_graph"></slot>
         </div>
     </main>
 </template>

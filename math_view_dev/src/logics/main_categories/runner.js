@@ -18,5 +18,5 @@ export default {
     reset(logic, state) {
         this.stop();
         logic.reset(state);
-    }
+    },
 }
