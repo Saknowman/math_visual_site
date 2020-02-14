@@ -7,6 +7,7 @@
                     :is_static_width="is_static_width"
                     :static_width="static_width"
                     :node_type="node_type"
+                    :help="help"
     >
         <g class="node-card-contents" :transform="'translate(0,' + (attribute_height / 2) + ')'">
             <g class="in_attributes"
@@ -17,6 +18,7 @@
                         :x="side_padding + (attribute_circle_radius * 2)"
                         :y="attribute_height * index + attribute_each_space * index"
                         text-anchor="start"
+                        :fill="text_color"
                 >
                     {{ in_attribute.label }}
                 </text>
@@ -24,6 +26,8 @@
                         :cx="side_padding + (attribute_circle_radius / 2)"
                         :cy="attribute_height * index + attribute_each_space * index + (attribute_height / 2)"
                         :fill="get_attribute_type_color(in_attribute.type)"
+                        :stroke="text_color"
+                        :stroke-width="attribute_circle_radius * 0.2"
                 ></circle>
             </g>
             <g class="out_attributes"
@@ -34,6 +38,7 @@
                         :x="out_card_width - side_padding - (attribute_circle_radius * 2)"
                         :y="attribute_height * index + attribute_each_space * index"
                         text-anchor="end"
+                        :fill="text_color"
                 >
                     {{ out_attribute.label }}
                 </text>
@@ -41,6 +46,8 @@
                         :cx="out_card_width - side_padding - (attribute_circle_radius / 2)"
                         :cy="attribute_height * index + attribute_each_space * index + (attribute_height / 2)"
                         :fill="get_attribute_type_color(out_attribute.type)"
+                        :stroke="text_color"
+                        :stroke-width="attribute_circle_radius * 0.2"
                 ></circle>
             </g>
         </g>

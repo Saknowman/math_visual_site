@@ -1,5 +1,7 @@
 <template>
-    <g class="node-card">
+    <g class="node-card"
+       @click="show_help"
+    >
         <rect :x="pos_x"
               :y="pos_y"
               rx="2"
@@ -13,6 +15,7 @@
               :x="pos_x + card_width / 2"
               :y="pos_y + top_padding"
               :font-size="title_height"
+              :fill="text_color"
               text-anchor="middle"
         >{{ title }}
         </text>
@@ -58,6 +61,10 @@
             node_type: {
                 type: String,
                 default: null
+            },
+            help: {
+                type: Object,
+                default: null
             }
         },
         computed: {
@@ -90,11 +97,20 @@
             border_color: function () {
                 const node_type = !this.node_type ? 'default' : this.node_type;
                 return this.$store.getters.node_card_types[node_type].color + '30';
+            },
+            text_color: function () {
+                const node_type = !this.node_type ? 'default' : this.node_type;
+                return this.$store.getters.node_card_types[node_type].text;
             }
         },
         methods: {
             calc_text_width(text_length, font_size) {
                 return font_size * text_length * 0.7;
+            },
+            show_help() {
+                if(!this.help) return;
+                this.$store.commit('set_node_help_content', this.help);
+                this.$store.commit('set_node_card_is_show_help', true);
             }
         }
     }
