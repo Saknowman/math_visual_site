@@ -65,10 +65,10 @@
                 return center_pos_y - distance_from_center_y;
             },
             line_length: function () {
-                return (this.width * 0.01) * this.$store.state.main_categories.constant_velocity_linear_motion.speed;
+                return (this.width * 0.01) * this.$store.state.main_categories.constant_velocity_linear_motion.velocity;
             },
             angle_arrow_points: function() {
-                const line_length = (this.width * 0.01) * this.$store.state.main_categories.constant_velocity_linear_motion.speed;
+                const line_length = (this.width * 0.01) * this.$store.state.main_categories.constant_velocity_linear_motion.velocity;
                 const edge_x = this.width / 2 + line_length;
                 const center_y = this.height / 2;
                 const arrow_cali_x = edge_x - line_length * 0.2;

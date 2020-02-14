@@ -77,8 +77,9 @@
                 return this.$store.getters.node_card_attribute_each_space;
             },
             my_content_height: function () {
-                return this.attribute_height * this.out_attributes.length
-                    + this.attribute_each_space * this.out_attributes.length
+                const attribute_max_num = Math.max(this.out_attributes.length, this.in_attributes.length);
+                return this.attribute_height * attribute_max_num
+                    + this.attribute_each_space * attribute_max_num
                     + this.attribute_height;
             },
             my_content_width: function () {
@@ -92,7 +93,7 @@
                     out_text_max_length = out_text_max_length < attribute.label.length ? attribute.label.length : out_text_max_length;
                 });
 
-                return this.calc_text_width(in_text_max_length + out_text_max_length, this.attribute_height);
+                return this.calc_text_width(in_text_max_length + out_text_max_length + 2, this.attribute_height);
             },
             out_card_width: function () {
                 return Math.max(this.card_width, this.my_content_width);

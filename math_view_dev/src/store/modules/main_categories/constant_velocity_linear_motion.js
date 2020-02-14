@@ -3,10 +3,10 @@ export default {
         current_x: 0,
         current_y: 0,
         angle: 45,
-        speed: 5,
+        velocity: 5,
         config: {
-            speed: {
-                label: 'Speed',
+            velocity: {
+                label: 'Velocity',
                 min: -20,
                 max: 20,
                 step: 1,

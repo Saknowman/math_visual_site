@@ -8,13 +8,13 @@ export default {
     reset(state) {
         state.current_x = state.config.current_x.default;
         state.current_y = state.config.current_y.default;
-        state.speed = state.config.speed.default;
+        state.velocity = state.config.velocity.default;
         state.angle = state.config.angle.default;
     }
 }
 
 function _calc_current_x(state) {
-    const distance_x = Math.cos(math_utils.to_radians(state.angle)) * state.speed;
+    const distance_x = Math.cos(math_utils.to_radians(state.angle)) * state.velocity;
     const result = state.current_x + distance_x;
     if (result > state.config.current_x.max) {
         return state.config.current_x.min
@@ -26,7 +26,7 @@ function _calc_current_x(state) {
 }
 
 function _calc_current_y(state) {
-    const distance_y = Math.sin(math_utils.to_radians(state.angle)) * state.speed;
+    const distance_y = Math.sin(math_utils.to_radians(state.angle)) * state.velocity;
     const result = state.current_y + distance_y;
     if (result > state.config.current_y.max) {
         return state.config.current_y.min

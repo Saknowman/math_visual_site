@@ -40,8 +40,8 @@
                     'current-value-viewer-list-section': Math.random()
                 },
                 range_input_config_list: [
-                    Object.assign(this.$store.state.main_categories.constant_velocity_linear_motion.config.speed, {
-                        value: this.$store.state.main_categories.constant_velocity_linear_motion.speed,
+                    Object.assign(this.$store.state.main_categories.constant_velocity_linear_motion.config.velocity, {
+                        value: this.$store.state.main_categories.constant_velocity_linear_motion.velocity,
                         change: this.change_speed
                     }),
                     Object.assign(this.$store.state.main_categories.constant_velocity_linear_motion.config.angle, {
@@ -53,7 +53,7 @@
                 current_values_config_list: [
                     {label: 'X', is_constant: false},
                     {label: 'Y', is_constant: false},
-                    {label: 'Speed', is_constant: true},
+                    {label: 'Velocity', is_constant: true},
                     {label: 'Angle', is_constant: true},
                 ],
                 is_running: false
@@ -81,13 +81,13 @@
                 this.current_values_list = [
                     this.$store.state.main_categories.constant_velocity_linear_motion.current_x,
                     this.$store.state.main_categories.constant_velocity_linear_motion.current_y,
-                    this.$store.state.main_categories.constant_velocity_linear_motion.speed,
+                    this.$store.state.main_categories.constant_velocity_linear_motion.velocity,
                     this.$store.state.main_categories.constant_velocity_linear_motion.angle
                 ];
                 if(this.is_running) this.start();
             },
             change_speed(value) {
-                this.$store.state.main_categories.constant_velocity_linear_motion.speed = value;
+                this.$store.state.main_categories.constant_velocity_linear_motion.velocity = value;
                 this.current_values_list.splice(2, 1, value);
             },
             change_angle(value) {
