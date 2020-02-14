@@ -1,7 +1,6 @@
 <template>
     <div>
-        <svg :viewBox="[0, 0, viewer_width, viewer_height].join(',')"
-             style="background: #eee">
+        <svg :viewBox="[0, 0, viewer_width, viewer_height].join(',')">
             <g class="nodes-g">
                 <node-card-in-out
                         v-for="(node_config, index) in node_config_list"
@@ -11,6 +10,7 @@
                         :pos_y="node_config.pos.y"
                         :in_attributes="node_config.in_attributes"
                         :out_attributes="node_config.out_attributes"
+                        :node_type="node_config.node_type"
                 ></node-card-in-out>
             </g>
 
@@ -43,7 +43,8 @@
                         out_attributes: [
                             {label: 'X', type: 'float'},
                             {label: 'Y', type: 'float'},
-                        ]
+                        ],
+                        node_type: 'input'
                     },
                     {
                         title: 'Circle',
@@ -52,7 +53,8 @@
                             {label: 'X', type: 'float'},
                             {label: 'Y', type: 'float'},
                         ],
-                        out_attributes: []
+                        out_attributes: [],
+                        node_type: 'output'
                     },
                     {
                         title: 'Velocity',
@@ -60,7 +62,8 @@
                         in_attributes: [],
                         out_attributes: [
                             {label: 'value', type: 'int'},
-                        ]
+                        ],
+                        node_type: 'input'
                     },
 
                     // Angle to Radian
@@ -70,7 +73,8 @@
                         in_attributes: [],
                         out_attributes: [
                             {label: 'value', type: 'int'},
-                        ]
+                        ],
+                        node_type: 'input'
                     },
                     {
                         title: 'To Radian',
@@ -86,7 +90,7 @@
                     // Radian to cos and sin
                     {
                         title: 'Cos',
-                        pos: {x: 70, y: 60},
+                        pos: {x: 80, y: 60},
                         in_attributes: [
                             {label: 'radian', type: 'float'}
                         ],
@@ -96,7 +100,7 @@
                     },
                     {
                         title: 'Sin',
-                        pos: {x: 70, y: 80},
+                        pos: {x: 80, y: 80},
                         in_attributes: [
                             {label: 'radian', type: 'float'}
                         ],
@@ -108,7 +112,7 @@
                     // Calc X and Y Velocity
                     {
                         title: 'Multiply',
-                        pos: {x: 120, y: 55},
+                        pos: {x: 125, y: 55},
                         in_attributes: [
                             {label: 'value1', type: 'float'},
                             {label: 'value2', type: 'float'}
@@ -119,7 +123,7 @@
                     },
                     {
                         title: 'Multiply',
-                        pos: {x: 120, y: 80},
+                        pos: {x: 125, y: 80},
                         in_attributes: [
                             {label: 'value1', type: 'float'},
                             {label: 'value2', type: 'float'}
@@ -158,26 +162,25 @@
                 viewer_height: this.$store.getters.layout_node_graph_height * ((this.$store.getters.node_card_static_default_width * 6) / this.$store.getters.layout_node_graph_width),
                 node_link_lines_config_list: [
                     // in_circle to adds
-                    { points: ['30,29', '170,19.5'].join(' ')},
-                    { points: ['30,33', '170,49'].join(' ')},
+                    { points: ['30,30.5', '170,21'].join(' ')},
+                    { points: ['30,35', '170,50.5'].join(' ')},
                     // adds to out_circle
-                    { points: ['193,19.5', '210, 29'].join(' ')},
-                    { points: ['193,49', '210, 33'].join(' ')},
+                    { points: ['200.5,21.5', '210.5, 31'].join(' ')},
+                    { points: ['200.5,51', '210.5, 35'].join(' ')},
                     // Angle to radian
-                    { points: ['27,79.5', '35,79.5'].join(' ')},
-                    // Angle to cos and sin
-                    { points: ['63,79.5', '70,69.5'].join(' ')},
-                    { points: ['63,79.5', '70,89'].join(' ')},
+                    { points: ['29,80.5', '35,81'].join(' ')},
+                    // Radian to cos and sin
+                    { points: ['71,81', '80.5,71'].join(' ')},
+                    { points: ['71,81', '80.5,91'].join(' ')},
                     // cos sin to multiply
-                    { points: ['92,69.5', '120,64.5'].join(' ')},
-                    { points: ['92,89', '120,89'].join(' ')},
+                    { points: ['110,71', '125.5,66'].join(' ')},
+                    { points: ['110,90.5', '125.5,90.5'].join(' ')},
                     // multiply to adds
-                    { points: ['145,64.5', '170,24'].join(' ')},
-                    { points: ['145,89.5', '170,54'].join(' ')},
+                    { points: ['155,66.5', '170.5,26'].join(' ')},
+                    { points: ['155,91.5', '170.5,56'].join(' ')},
                     // velocity to multiply
-                    { points: ['35.5,119', '90, 119', '120,68.5'].join(' ')},
-                    { points: ['35.5,119', '90, 119', '120,94'].join(' ')},
-
+                    { points: ['35.5,121', '110, 121', '125.5,70.5'].join(' ')},
+                    { points: ['35.5,121', '110, 121', '125.5,96'].join(' ')},
                 ]
             }
         }

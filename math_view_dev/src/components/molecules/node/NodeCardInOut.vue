@@ -6,6 +6,7 @@
                     :content_width="my_content_width"
                     :is_static_width="is_static_width"
                     :static_width="static_width"
+                    :node_type="node_type"
     >
         <g class="node-card-contents" :transform="'translate(0,' + (attribute_height / 2) + ')'">
             <g class="in_attributes"

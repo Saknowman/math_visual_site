@@ -2,25 +2,20 @@
     <g class="node-card">
         <rect :x="pos_x"
               :y="pos_y"
+              rx="2"
               :width="card_width"
               :height="card_height"
-              class="board"
+              :fill="board_color"
+              :stroke="border_color"
               :stroke-width="Math.min(1, card_width * 0.02)"
         ></rect>
         <text class="title"
               :x="pos_x + card_width / 2"
               :y="pos_y + top_padding"
-              :font-size="title_height * 0.8"
+              :font-size="title_height"
               text-anchor="middle"
         >{{ title }}
         </text>
-        <line class="title_under_border"
-              :x1="pos_x + side_padding"
-              :y1="pos_y + title_height"
-              :x2="card_width + pos_x - side_padding"
-              :y2="pos_y + title_height"
-              :stroke-width="Math.min(1, card_width * 0.02)"
-        ></line>
         <g :transform="'translate(' + [pos_x, content_pos_y].join(',') + ')'">
             <slot></slot>
         </g>
@@ -59,6 +54,10 @@
             static_width: {
                 type: Number,
                 default() {return this.$store.getters.node_card_static_default_width}
+            },
+            node_type: {
+                type: String,
+                default: null
             }
         },
         computed: {
@@ -83,6 +82,14 @@
             },
             content_pos_y: function () {
                 return (this.pos_y + this.title_height + this.card_width * 0.02) + this.$store.getters.node_card_contents_top_padding;
+            },
+            board_color: function (){
+                const node_type = !this.node_type ? 'default' : this.node_type;
+                return this.$store.getters.node_card_types[node_type].color + 'ff';
+            },
+            border_color: function () {
+                const node_type = !this.node_type ? 'default' : this.node_type;
+                return this.$store.getters.node_card_types[node_type].color + '30';
             }
         },
         methods: {
@@ -96,10 +103,6 @@
     .node-card {
         .board {
             fill: rgba($theme-color-main-primary, 0.2);
-            stroke: $theme-color-main-primary;
-        }
-
-        .title_under_border {
             stroke: $theme-color-main-primary;
         }
 
